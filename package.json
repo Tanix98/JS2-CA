@@ -1,0 +1,27 @@
+{
+  "name": "js2-ca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanix98/JS2-CA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanix98/JS2-CA/issues"
+  },
+  "homepage": "https://github.com/Tanix98/JS2-CA#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.1.0",
+    "sass": "^1.55.0"
+  }
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script defer src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+    <!-- header -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex align-items-center fixed-top">
+        <div class="container-fluid">
+            <button class="navbar-toggler col-1.1 col-sm-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobilemenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-10.1 col-sm-5 col-md-4 m-auto">
+                <a href="/index.html" class="navbar-brand d-inline-block m-0"><h2><strong>Company logo</strong></h2></a>
+            </div>
+            <div class="collapse navbar-collapse" id="mobilemenu">
+                <div class="">
+                    <div class="input-group mt-3 mt-sm-0 m-auto col-sm-6 ps-sm-4 ps-md-0">
+                        <input class="form-control border-end-0 border rounded-0"" type="search" value="" placeholder="Search..." id="example-search-input">
+                        <span class="input-group-append d-flex">
+                            <button class="btn bg-white border-start-0 border ms-n5 rounded-0 d-flex align-items-center" type="button">
+                                <img src="/wireframes_design/icons/selfmade-icons/search_icon.svg">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="text-center d-sm-none mt-3 mt-sm-0">
+                    <a href="" class="btn btn-primary" role="button">Create post</a>
+                </div>
+                <div class="text-center d-sm-none mt-3 mt-sm-0">
+                    <a href="/index.html" class="btn btn-light" role="button">Homepage</a>
+                </div>
+                <div class="col-sm text-center text-sm-end ps-1" style="white-space: nowrap;">
+                    <a href="log_in.html" class="btn btn-outline-success mt-3 mt-sm-0 col-sm" role="button">Log in</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main -->
+    <main>
+        <div class="container-xxl">
+            <div class="row d-flex justify-content-center">
+                <!-- Profile info & posts -->
+                <div class="col col-sm-8 col-md-7 ">
+                    <div class="mb-4">
+                        <div class="">
+                            <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="w-50 d-block m-auto rounded-circle">
+                            <h2 class="text-center mt-1 mb-3">Ola Normann</h2>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col d-flex flex-column p-1">
+                                <img src="/wireframes_design/icons/icons8-birthday-96.png" class="align-self-center h-100" style="max-height: 30px;">
+                                <strong class="align-self-center">28.03.1996</strong>
+                            </div>
+                            <div class="col d-flex flex-column p-1">
+                                <img src="/wireframes_design/icons/selfmade-icons/location_icon.svg" class="align-self-center h-100" style="max-height: 30px;">
+                                <strong class="align-self-center">Norway</strong>
+                            </div>
+                            <div class="col d-flex flex-column p-1" style="white-space: nowrap;">
+                                <img src="/wireframes_design/icons/icons8-briefcase-64.png" class="align-self-center h-100" style="max-height: 30px;">
+                                <strong class="align-self-center">History student</strong>
+                            </div>
+                            <!-- Contacts button needs to stand out from the icons, will open modal in future -->
+                            <btn type="button" class="col d-flex flex-column p-1">
+                                <img src="/wireframes_design/icons/icons8-contacts-64.png" class="align-self-center h-100" style="max-height: 30px;">
+                                <strong class="align-self-center">Contacts</strong>
+                            </btn>
+                        </div>
+                        <p>Morbi ut ex quis nisl molestie pulvinar. Ut est nunc, pharetra vitae condimentum sed, pulvinar id ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    </div>
+
+                    <form action="" class="">
+                        <div class="form-group">
+                            <div class="media mb-2">
+                                <a href="log_in.html" class="d-inline-flex align-items-center text-dark text-decoration-none">
+                                    <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                    <div class="media-body p-2">My profile</div>
+                                </a>
+                            </div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write post..." rows="3"></textarea>
+                            <form action="">
+                                <div class="mt-2 d-flex justify-content-between" style="max-height: 50px;">
+                                    <!-- Switch over from pngs to bootstrap icons -->
+                                    <label for="formFileMultiple" class="form-label w-25"><img src="/wireframes_design/icons/8680289_image_add_line_icon.svg" class="h-100"></label>
+                                    <input class="form-control collapse" type="file" id="formFileMultiple" multiple/>
+                                    <button type="submit" class="btn btn-primary h-25">Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </form>
+
+                    <div class="posts-content">
+                        <div class="container mt-2">
+                            <!-- Change likes & comments to icons -->
+                            <div class="m-auto">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="media mb-3 d-inline-flex">
+                                            <a href="profile.html" class="d-inline-flex">
+                                                <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                            </a>
+                                            <div class="d-flex flex-column ps-2">
+                                                <a href="profile.html" class="text-dark text-decoration-none"><div class="media-body">Ola Normann</div></a>
+                                                <div class="text-muted small" role="button">Posted 29. august</div>
+                                            </div>
+                                        </div>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus commodo bibendum.</div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                        <a href="" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>3</strong> Likes</small> </a>
+                                        <a href="" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>0</strong> Comments</small> </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-auto">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="media mb-3 d-inline-flex">
+                                            <a href="profile.html" class="d-inline-flex">
+                                                <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                            </a>
+                                            <div class="d-flex flex-column ps-2">
+                                                <a href="profile.html" class="text-dark text-decoration-none"><div class="media-body">Ola Normann</div></a>
+                                                <div class="text-muted small" role="button">Posted 26. august</div>
+                                            </div>
+                                        </div>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus commodo bibendum. Vivamus laoreet blandit odio, vel finibus quam dictum ut.</div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                        <a href="" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>7</strong> Likes</small> </a>
+                                        <a href="" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>2</strong> Comments</small> </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-auto">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <div class="media mb-3 d-inline-flex">
+                                            <a href="profile.html" class="d-inline-flex">
+                                                <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                            </a>
+                                            <div class="d-flex flex-column ps-2">
+                                                <a href="profile.html" class="text-dark text-decoration-none"><div class="media-body">Ola Normann</div></a>
+                                                <div class="text-muted small" role="button">Posted 29. august</div>
+                                            </div>
+                                        </div>
+                                        <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="w-75 d-block m-auto rounded mt-2">
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                        <a href="" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>25</strong> Likes</small> </a>
+                                        <a href="" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>8</strong> Comments</small> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile contact list -->
+                <div class="col-3 d-none justify-content-center">
+                    <div class="d-none d-sm-block">
+                        <h4 class="mb-3 text-center">Ola Normann's contacts</h4>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                        <div class="">
+                            <li class="media mb-3 d-flex justify-content-center">
+                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer (find better solution) -->
+    <footer class="text-center bg-light p-2 mt-3">
+        <div class="container">
+            <div class="p-2">Copyright &copy; 2022 Company</div>
+        </div>
+    </footer>
+</body>
+</html>

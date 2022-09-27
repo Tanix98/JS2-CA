@@ -1,0 +1,40 @@
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body { 
+    padding-top: 88px;
+}
+
+@media (max-width: 239.33px) {
+    body { 
+        padding-top: 127px;
+    }
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-bottom: 0.2rem;
+}
+
+.profile-img-xl {
+    
+}
+
+.profile-img-lg {
+    
+}
+
+.profile-img-md {
+    
+}
+
+.profile-img-sm {
+    
+}
+
+.icons-md {
+
+}
+
+.icons-sm {
+
+}
