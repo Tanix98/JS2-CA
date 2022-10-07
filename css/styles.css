@@ -2860,7 +2860,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #0dcaf0;
 }
 
-.btn-warning {
+.btn-warning, .btn-custom {
   --bs-btn-color: #000;
   --bs-btn-bg: #ffc107;
   --bs-btn-border-color: #ffc107;
@@ -2877,7 +2877,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #ffc107;
 }
 
-.btn-danger {
+.btn-danger, .btn-custom:hover {
   --bs-btn-color: #fff;
   --bs-btn-bg: #dc3545;
   --bs-btn-border-color: #dc3545;
@@ -10769,4 +10769,13 @@ body {
 }
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-bottom: 0.2rem;
+}
+
+.dropdown-menu-center {
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
+  width: 120px !important;
+  min-width: 120px !important;
 }/*# sourceMappingURL=styles.css.map */

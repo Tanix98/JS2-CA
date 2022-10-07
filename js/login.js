@@ -8,11 +8,18 @@ const regPassword = document.querySelector("#reg-password");
 // Error messages
 const loginError = document.querySelector("#login-error");
 const nameError = document.querySelector("#name-error")
-const emailError = document.querySelector("#email-error")
+const emailError1 = document.querySelector("#email-error1")
+const emailError2 = document.querySelector("#email-error2")
 const regPasswordError = document.querySelector("#password-error");
 const regError = document.querySelector("#reg-error");
 
-// Rewrite login and register function into one using if else?
+const regSuccess = document.querySelector("#reg-success");
+
+// Rewrite login and register function into one using if else btn id?
+
+/** Sends a login request to the API. 
+ * sendBody object contains the values typed into the email and password input fields, which are sent as a post request to the API's login endpoint, and will return the user's accesstoken and store it in localStorage if valid. 
+*/
 async function loginUser() {
     try {
         const sendBody = {
@@ -30,16 +37,21 @@ async function loginUser() {
         console.log(loginEmail.value, loginPassword.value, sendBody);
         console.log(data);
         localStorage.setItem("accessToken", data.accessToken)
+        // Error messages
         if (data.statusCode === 400 || data.message === "Invalid email or password" ) {
             loginError.style.display = "block";
         } else {
             loginError.style.display = "none";
+            location.reload();
         }
     } catch (e) {
         console.log(e);
     }
 }
 
+/** Sends a register request to the API. 
+ * sendBody object contains the values typed into the name, email and password input fields, which are sent as a post request to the API's register endpoint, and will return the email and password of the registered user if valid. 
+*/
 async function registerUser() {
     try {
         const sendBody = {
@@ -57,12 +69,25 @@ async function registerUser() {
         const data = await response.json();
         console.log(regName.value, regEmail.value, regPassword.value, sendBody);
         console.log(data);
+        // Account registered message
+        if (data.statusCode === 500 || data.statusCode === 400) {
+            regSuccess.style.display = "none";
+        } else {
+            regSuccess.style.display = "block";
+            location.reload();
+        }
+        // Error messages
         if ( data.message === 'body/name must match pattern "^[\\w]+$"') {
             nameError.style.display = "block";
-            emailError.style.display = "block";
+            emailError1.style.display = "block";
         } else {
             nameError.style.display = "none";
-            emailError.style.display = "none";
+            emailError1.style.display = "none";
+        }
+        if (data.statusCode === 500) {
+            emailError2.style.display = "block";
+        } else {
+            emailError2.style.display = "none";
         }
         if (data.message === "Profile already exists") {
             regError.style.display = "block";
@@ -87,29 +112,26 @@ registerBtn.addEventListener("click", (e) => {
     e.preventDefault();
     registerUser();
     checkPassword();
-    console.log(regPassword.value);
 });
 
-// Error checks
+/**
+ * Removes empty space from the password input with trim, then checks if the length is equal to or greater than 8, and displays error message if less than 8
+*/
 function checkPassword() {
-    if (checkLength(regPassword.value, 8)) {
-        regPasswordError.style.display = "none";
-    } else {
-        regPasswordError.style.display = "block";
-    }
-}
-function checkLength(value, len) {
-    try{
-        if(value.trim().length > len) {
-            return true;
+    try {
+        if (regPassword.value.trim().length >= 8) {
+            regPasswordError.style.display = "none";
+        } else {
+            regPasswordError.style.display = "block";
         }
-        else{
-            return false;
-        }
-    }
-    catch(e) {
+    } catch(e) {
         console.log(e)
     }
+}
+
+// Redirect user to home page if there's an accesstoken in localStorage
+if (localStorage.getItem("accessToken")) {
+    window.location.href = "/index.html";
 }
 
 /*registerBtn.addEventListener("click", (e) => {
