@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile page</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script defer src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js" defer></script>
+    <script src="../js/searchbar.js" defer></script>
 </head>
 <body>
     <!-- header -->
@@ -21,10 +22,12 @@
             <div class="collapse navbar-collapse" id="mobilemenu">
                 <div class="">
                     <div class="input-group mt-3 mt-sm-0 m-auto col-sm-6 ps-sm-4 ps-md-0">
-                        <input class="form-control border-end-0 border rounded-0"" type="search" value="" placeholder="Search..." id="example-search-input">
+                        <input class="form-control border-end-0 border rounded-0"" type="search" value="" placeholder="Search..." id="search-input">
                         <span class="input-group-append d-flex">
-                            <button class="btn bg-white border-start-0 border ms-n5 rounded-0 d-flex align-items-center" type="button">
-                                <img src="/wireframes_design/icons/selfmade-icons/search_icon.svg">
+                            <button class="btn bg-white border-start-0 border rounded-0 d-flex align-items-center" type="button" id="search-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
@@ -37,7 +40,7 @@
                     <a href="/index.html" class="btn btn-light" role="button">Homepage</a>
                 </div>
                 <div class="col-sm text-center text-sm-end ps-1" style="white-space: nowrap;">
-                    <a href="log_in.html" class="btn btn-outline-success mt-3 mt-sm-0 col-sm" role="button">Log in</a>
+                    <a href="log_in.html" class="btn btn-outline-success mt-3 mt-sm-0 col-sm" role="button">Login/Sign up</a>
                 </div>
             </div>
         </div>

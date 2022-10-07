@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "sass --watch scss:css"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "bootstrap": "^5.2.0"
   },
   "devDependencies": {
+    "jsdoc": "^3.6.11",
     "live-server": "^1.1.0",
     "sass": "^1.55.0"
   }
