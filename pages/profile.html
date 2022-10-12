@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile page</title>
+    <title>Profile</title>
+    <link rel="shortcut icon" type="image/jpg" href="/wireframes_design/favicon-32x32.png"/>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="../js/searchbar.js" defer></script>
     <script src="../js/login_check.js" defer></script>
     <script src="../js/logged_in.js" defer></script>
+    <script src="../js/profile.js" defer></script>
+    <script src="../js/create_post_mobile.js" defer></script>
 </head>
 <body>
     <!-- header -->
@@ -36,25 +39,25 @@
                     </div>
                 </div>
                 <div class="text-center d-sm-none mt-3 mt-sm-0">
-                    <a href="" class="btn btn-primary" role="button" style="width: 120px">Create post</a>
+                    <a href="" class="btn btn-primary" id="open-create-post-modal-btn-mobile" role="button" style="width: 120px">Create post</a>
                 </div>
                 <div class="text-center d-sm-none mt-3 mt-sm-0">
                     <a href="/index.html" class="btn btn-info" role="button" style="width: 120px">Home</a>
                 </div>
-                <div class="col-sm text-center text-sm-end ps-1">
-                    <a href="/pages/log_in.html" class="btn btn-outline-success mt-3 mt-sm-0 col-sm logged_out_nav" role="button" style="width: 120px">Login/Sign up</a>
+                <div class="col-sm text-center text-sm-end ps-1 logged_out_nav">
+                    <a href="/pages/log_in.html" class="btn btn-outline-success mt-3 mt-sm-0 col-sm" role="button" style="width: 126px">Login/Sign up</a>
                 </div>
-                <div class="btn-group logged_in_nav mt-3 mt-sm-0 text-center" style="display: none">
+                <div class="btn-group logged_in_nav mt-3 mt-sm-0 text-center ms-auto">
                     <button type="button" class="btn btn-success dropdown-toggle" style="width: 120px" data-bs-toggle="dropdown" aria-expanded="false">
                         Profile
                     </button>
                     <ul class="dropdown-menu dropdown-menu-center">
-                        <li><a class="dropdown-item" href="/pages/profile.html">My profile</a></li>
-                        <li><a class="dropdown-item" href="/pages/profile.html">My followers</a></li>
-                        <li><a class="dropdown-item" href="/pages/profile.html">Edit profile</a></li>
+                        <li><a class="dropdown-item" href="/pages/my_profile.html">My profile</a></li>
+                        <li><a class="dropdown-item" href="/pages/my_profile.html">My followers</a></li>
+                        <li><a class="dropdown-item" href="/pages/my_profile.html">Edit profile</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li id="log_out_btn"><a class="dropdown-item" href="#">Log out</a></li>
+                        <li id="log_out_btn"><a class="dropdown-item text-danger fw-bold" href="#">Log out</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,120 +66,17 @@
 
     <!-- main -->
     <main>
-        <div class="container-xxl">
+        <div class="container-xxl" style="padding-top:30px">
             <div class="row d-flex justify-content-center">
-                <!-- Profile info & posts -->
-                <div class="col col-sm-8 col-md-7 ">
-                    <div class="mb-4">
-                        <div class="">
-                            <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="w-50 d-block m-auto rounded-circle">
-                            <h2 class="text-center mt-1 mb-3">Ola Normann</h2>
-                        </div>
-                        <div class="row mt-2 mb-2">
-                            <div class="col d-flex flex-column p-1">
-                                <img src="/wireframes_design/icons/icons8-birthday-96.png" class="align-self-center h-100" style="max-height: 30px;">
-                                <strong class="align-self-center">28.03.1996</strong>
-                            </div>
-                            <div class="col d-flex flex-column p-1">
-                                <img src="/wireframes_design/icons/selfmade-icons/location_icon.svg" class="align-self-center h-100" style="max-height: 30px;">
-                                <strong class="align-self-center">Norway</strong>
-                            </div>
-                            <div class="col d-flex flex-column p-1" style="white-space: nowrap;">
-                                <img src="/wireframes_design/icons/icons8-briefcase-64.png" class="align-self-center h-100" style="max-height: 30px;">
-                                <strong class="align-self-center">History student</strong>
-                            </div>
-                            <!-- Contacts button needs to stand out from the icons, will open modal in future -->
-                            <btn type="button" class="col d-flex flex-column p-1">
-                                <img src="/wireframes_design/icons/icons8-contacts-64.png" class="align-self-center h-100" style="max-height: 30px;">
-                                <strong class="align-self-center">Contacts</strong>
-                            </btn>
-                        </div>
-                        <p>Morbi ut ex quis nisl molestie pulvinar. Ut est nunc, pharetra vitae condimentum sed, pulvinar id ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <!-- Profile info -->
+                <div class="col col-sm-10 col-md-9 col-lg-7 shadow rounded pt-3">
+                    <div class="mb-4" id="profile-main">
                     </div>
-
-                    <form action="" class="">
-                        <div class="form-group">
-                            <div class="media mb-2">
-                                <a href="log_in.html" class="d-inline-flex align-items-center text-dark text-decoration-none">
-                                    <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
-                                    <div class="media-body p-2">My profile</div>
-                                </a>
-                            </div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Write post..." rows="3"></textarea>
-                            <form action="">
-                                <div class="mt-2 d-flex justify-content-between" style="max-height: 50px;">
-                                    <!-- Switch over from pngs to bootstrap icons -->
-                                    <label for="formFileMultiple" class="form-label w-25"><img src="/wireframes_design/icons/8680289_image_add_line_icon.svg" class="h-100"></label>
-                                    <input class="form-control collapse" type="file" id="formFileMultiple" multiple/>
-                                    <button type="submit" class="btn btn-primary h-25">Post</button>
-                                </div>
-                            </form>
-                        </div>
-                    </form>
-
-                    <div class="posts-content">
-                        <div class="container mt-2">
-                            <!-- Change likes & comments to icons -->
-                            <div class="m-auto">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="media mb-3 d-inline-flex">
-                                            <a href="profile.html" class="d-inline-flex">
-                                                <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
-                                            </a>
-                                            <div class="d-flex flex-column ps-2">
-                                                <a href="profile.html" class="text-dark text-decoration-none"><div class="media-body">Ola Normann</div></a>
-                                                <div class="text-muted small" role="button">Posted 29. august</div>
-                                            </div>
-                                        </div>
-                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus commodo bibendum.</div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>3</strong> Likes</small> </a>
-                                        <a href="" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>0</strong> Comments</small> </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-auto">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="media mb-3 d-inline-flex">
-                                            <a href="profile.html" class="d-inline-flex">
-                                                <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
-                                            </a>
-                                            <div class="d-flex flex-column ps-2">
-                                                <a href="profile.html" class="text-dark text-decoration-none"><div class="media-body">Ola Normann</div></a>
-                                                <div class="text-muted small" role="button">Posted 26. august</div>
-                                            </div>
-                                        </div>
-                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus finibus commodo bibendum. Vivamus laoreet blandit odio, vel finibus quam dictum ut.</div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>7</strong> Likes</small> </a>
-                                        <a href="" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>2</strong> Comments</small> </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="m-auto">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="media mb-3 d-inline-flex">
-                                            <a href="profile.html" class="d-inline-flex">
-                                                <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
-                                            </a>
-                                            <div class="d-flex flex-column ps-2">
-                                                <a href="profile.html" class="text-dark text-decoration-none"><div class="media-body">Ola Normann</div></a>
-                                                <div class="text-muted small" role="button">Posted 29. august</div>
-                                            </div>
-                                        </div>
-                                        <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="w-75 d-block m-auto rounded mt-2">
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>25</strong> Likes</small> </a>
-                                        <a href="" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>8</strong> Comments</small> </a>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Profile's posts -->
+                    <div>
+                        <h4>Posts</h4>
+                        <hr/ class="mt-2 mb-2">
+                        <div id="user-post-feed">
                         </div>
                     </div>
                 </div>

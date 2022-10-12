@@ -10759,12 +10759,12 @@ textarea.form-control-lg {
   }
 }
 body {
-  padding-top: 88px;
+  padding-top: 57px;
 }
 
 @media (max-width: 239.33px) {
   body {
-    padding-top: 127px;
+    padding-top: 96px;
   }
 }
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
@@ -10778,4 +10778,15 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   transform: translate(-50%, 0) !important;
   width: 120px !important;
   min-width: 120px !important;
+}
+
+.profile-img-main {
+  height: 180px !important;
+  width: 180px !important;
+  object-fit: cover;
+  object-position: center;
+}
+
+p {
+  margin-bottom: 0;
 }/*# sourceMappingURL=styles.css.map */

@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Post</title>
     <link rel="shortcut icon" type="image/jpg" href="/wireframes_design/favicon-32x32.png"/>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="../js/searchbar.js" defer></script>
-    <script src="../js/login.js" defer></script>
+    <script src="../js/login_check.js" defer></script>
     <script src="../js/logged_in.js" defer></script>
+    <script src="../js/post.js" defer></script>
+    <script src="../js/edit_post.js" defer></script>
+    <script src="../js/delete_post.js" defer></script>
     <script src="../js/create_post_mobile.js" defer></script>
 </head>
 <body>
@@ -65,54 +68,60 @@
 
     <!-- main -->
     <main>
-        <div class="container-xxl" style="padding-top:30px">
-            <!-- Login form -->
-            <div class="row d-flex justify-content-center mb-3">
-                <div class="col-11 col-sm-7 col-md-5 col-lg-4 col-xxl-3">
-                    <h3>Log in</h3>
-                    <form class="d-flex flex-column m-auto id="login-form"">
-                        <div class="form-group">
-                          <label for="mail">Email address</label>
-                          <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Email" required>
-                        </div>
-                        <div class="form-group mt-2">
-                          <label for="password">Password</label>
-                          <input type="password" class="form-control" id="login-password" placeholder="Password" required>
-                        </div>
-                        <p class="text-danger mb-0 mt-2" style="display:none" id="login-error">Incorrect email or password</p>
-                        <div class="d-flex justify-content-center gap-2 mt-3" style="max-height: 60px;">
-                            <button type="submit" class="btn btn-success" id="login-btn">Log in</button>
-                        </div>
-                    </form>
+        <div class="position-fixed" id="edit-post-modal" style="display: none; z-index: 1;width: 100vw; height: 100vh; background-color: rgba(0,0,0,.6);">
+            <div class="card col-11 col-sm-9 col-md-7 col-lg-5 m-auto mt-5 ">
+                <div class="card-body">
+                    <div class="m-auto d-sm-block pe-sm-0">
+                        <form>
+                            <h4 class="mb-2 display-6 mb-3">Edit post</h4>
+                            <div class="form-group mt-2">
+                                <label for="post-title" class="fw-bold">Title*</label>
+                                <input name="post-title" class="form-control mb-1" id="edit-post-title" placeholder="Title...">
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="post-body" class="fw-bold">Post*</label>
+                                <textarea name="post-body" class="form-control mb-1" id="edit-post-body" placeholder="Post..." rows="3"></textarea>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="post-media" class="fw-bold">Media link</label>
+                                <div class="d-flex justify-content-between" style="max-height: 40px;">
+                                    <input name="post-media" class="form-control me-1" id="edit-post-media" placeholder="Media link...">
+                                </div>
+                                <div class="mt-3 d-flex justify-content-between flex-wrap gap-2">
+                                    <button class="btn btn-danger ps-4 pe-4" style="width: 107px" id="cancel-btn">Cancel</button>
+                                    <button type="submit" class="btn btn-primary ps-4 pe-4" style="width: 107px" id="edit-post-btn">Confirm</button>
+                                </div>
+                                <p class="text-danger mb-0" style="display: none" id="title-body-error">Missing title or body</p>
+                                <p class="text-danger mb-0" style="display: none" id="media-error">Media link invalid</p>
+                                <p class="text-danger mb-0" style="display: none" id="fields-empty">Please fill out field(s)</p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <!-- Register form -->
+        </div>
+        <div class="container-xxl" style="padding-top:30px">
             <div class="row d-flex justify-content-center">
-                <div class="col-11 col-sm-7 col-md-5 col-lg-4 col-xxl-3">
-                    <h3>Sign up</h3>
-                    <form class="d-flex flex-column m-auto" id="register-form">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input class="form-control" id="reg-name" placeholder="Name" required>
-                            <p class="text-danger mb-0" style="display:none" id="name-error">Name cannot contain punctuation symbols apart from underscore (_)</p>
-                        </div>
-                        <div class="form-group mt-2">
-                            <label for="mail">Email address</label>
-                            <input type="email" class="form-control email" id="reg-email" aria-describedby="emailHelp" placeholder="Email" required>
-                            <p class="text-danger mb-0" style="display:none" id="email-error1">Email must be a valid stud.noroff.no or noroff.no email address</p>
-                            <p class="text-danger mb-0" style="display:none" id="email-error2">This email is already in use</p>
-                        </div>
-                        <div class="form-group mt-2">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="reg-password" placeholder="Password" required>
-                            <p class="text-danger mb-0" style="display:none" id="password-error">Password must be at least 8 characters long</p>
-                        </div>
-                        <p class="text-danger mb-0" style="display:none" id="reg-error">Profile already exists</p>
-                        <p class="text-success mb-0 fw-bold" style="display:none" id="reg-success">Account created!</p>
-                        <div class="d-flex justify-content-center gap-2 mt-3" style="max-height: 60px;">
-                            <button type="submit" class="btn btn-outline-dark" id="register-btn">Sign up</button>
-                        </div>
-                    </form>
+                <div class="col col-sm-8 col-md-7 shadow rounded">
+                    <div class="pt-2 shadow-sm rounded" id="post-container">
+                    </div>
+                    <div class="mb-2" id="comment-box">
+                        <h4 class="mb-2">Comments</h4>
+                        <form action="" class="">
+                            <div class="form-group mt-2">
+                                <div class="media mb-2" id="createpost-avatar-name">
+                                </div>
+                                <textarea class="form-control" id="comment-input" placeholder="Write comment..." rows="3"></textarea>
+                                <form action="">
+                                    <div class="mt-2 d-flex justify-content-between" style="max-height: 40px;">
+                                        <button type="submit" class="btn btn-info ms-auto" id="post-comment-btn">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="pb-2" id="comments-container">
+                    </div>
                 </div>
             </div>
         </div>

@@ -34,9 +34,9 @@ async function loginUser() {
             }
         });
         const data = await response.json();
-        console.log(loginEmail.value, loginPassword.value, sendBody);
-        console.log(data);
         localStorage.setItem("accessToken", data.accessToken)
+        localStorage.setItem("userName", data.name)
+        localStorage.setItem("userAvatar", data.avatar)
         // Error messages
         if (data.statusCode === 400 || data.message === "Invalid email or password" ) {
             loginError.style.display = "block";
@@ -67,8 +67,7 @@ async function registerUser() {
             }
         });
         const data = await response.json();
-        console.log(regName.value, regEmail.value, regPassword.value, sendBody);
-        console.log(data);
+        console.log("saaaaa" + regName);
         // Account registered message
         if (data.statusCode === 500 || data.statusCode === 400) {
             regSuccess.style.display = "none";
