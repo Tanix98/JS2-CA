@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="shortcut icon" type="image/jpg" href="/wireframes_design/favicon-32x32.png"/>
+    <link rel="shortcut icon" type="image/jpg" href="https://twemoji.maxcdn.com/v/14.0.2/svg/1f1e8.svg"/>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="../js/searchbar.js" defer></script>
@@ -23,7 +23,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="col-10.1 col-sm-4 col-md-4 m-auto">
-                <a href="/index.html" class="navbar-brand d-inline-block m-0"><h2><strong>Company logo</strong></h2></a>
+                <a href="/index.html" class="navbar-brand d-inline-block m-0"><h2><strong>Company</strong></h2></a>
             </div>
             <div class="collapse navbar-collapse" id="mobilemenu">
                 <div class="">
@@ -123,11 +123,37 @@
                 <!-- Post feed -->
                 <!-- Change likes & comments to icons -->
                 <div class="ps-sm-0 col-sm-9 col-md-7 col-lg-6">
-                    <div id="filters">
-                        <a href="/index.html?sort=created&sortOrder=asc">Oldest</a>
-                    </div>
                     <div class="posts-content ps-sm-4">
-                        <h2 class="text-center mb-4">Recent posts</h2>
+                        <h2 class="text-center mb-4">Home</h2>
+                        <!-- Filters -->
+                        <div class="d-flex flex-wrap gap-4 mb-3">
+                            <div>
+                                <h4>Sort posts</h4>
+                                <form class="d-flex align-items-center gap-2">
+                                    <div class="d-flex flex-wrap justify-content-center gap-1">
+                                        <input type="checkbox" id="sort-recent" class="form-check-input" name="sort-recent" value="New" checked>
+                                        <label for="sort-recent" class="form-check-label">Newest</label>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-1">
+                                        <input type="checkbox" id="sort-oldest" name="sort-oldest" value="Old" class="form-check-input">
+                                        <label for="sort-oldest" class="form-check-label">Oldest</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div>
+                                <h4>Filter posts</h4>
+                                <form class="d-flex align-items-center gap-2">
+                                    <div class="d-flex flex-wrap justify-content-center gap-1">
+                                        <input type="checkbox" id="filter-media" class="form-check-input" name="filter-media" value="Media">
+                                        <label for="filter-media" class="form-check-label">Media</label>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center gap-1">
+                                        <input type="checkbox" id="filter-text" class="form-check-input" name="filter-text" value="Text">
+                                        <label for="filter-text" class="form-check-label">Text</label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="">
                             <div id="post-feed"></div>
                         </div>

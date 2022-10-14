@@ -3,8 +3,9 @@ const srcBtn = document.querySelector("#search-button");
 
 srcBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    location.href = `https://www.google.com/search?q=${srcBar.value}`;
-    console.log(srcBar.value);
+    location.href = `../pages/search.html?q=${srcBar.value}`;
+    console.log("results: " + srcBar.value.toLowerCase());
+    search();
 });
 
 srcBar.addEventListener("keypress", (e) => {

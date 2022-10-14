@@ -18,6 +18,13 @@ async function fetchPost() {
         })
         const data = await response.json();
         console.log("Post reactions: " + JSON.stringify(data.reactions));
+        console.log(`${data.body}`);
+        const postTitleInput2 = document.querySelector("#edit-post-title");
+        const postBodyInput2 = document.querySelector("#edit-post-body");
+        const postMediaInput2 = document.querySelector("#edit-post-media");
+        postTitleInput2.value = `${data.title}`;
+        postBodyInput2.value = `${data.body}`;
+        postMediaInput2.value = `${data.media}`;
         if (`${data.author.name}` === userName) {
             try {
                 if (`${data.author.avatar}` === "") {
@@ -27,7 +34,7 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                        <div class="media d-block d-sm-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
                                             <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
                                             </a>
@@ -40,15 +47,15 @@ async function fetchPost() {
                                                 <button class="btn btn-danger mt-2 mt-md-0 mt-auto" style="width:107px" id="delete-post-btn">Delete post</button>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
-                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comments</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
+                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
                             </div>`;
@@ -57,7 +64,7 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                        <div class="media d-block d-sm-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
                                             <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
                                             </a>
@@ -70,16 +77,16 @@ async function fetchPost() {
                                                 <button class="btn btn-danger mt-2 mt-md-0 mt-auto" style="width:107px" id="delete-post-btn">Delete post</button>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                             <img src="${data.media}" class="mw-100 mt-2 shadow rounded d-block m-auto" style="max-height:600px;">
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
-                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comments</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
+                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
                             </div>`;
@@ -94,9 +101,9 @@ async function fetchPost() {
                             `<div class="m-auto">
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                    <div class="media d-block d-sm-inline-flex w-100">
                                         <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
-                                        <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                        <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                         </a>
                                         <div class="d-flex flex-column ps-0 ps-md-2 me-2">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data.author.name}</div></a>
@@ -107,15 +114,15 @@ async function fetchPost() {
                                             <button class="btn btn-danger mt-2 mt-md-0 mt-auto" style="width:107px" id="delete-post-btn">Delete post</button>
                                         </div>
                                     </div>
-                                    <hr/ class="mt-1 mb-1">
+                                    <hr/ class="mt-2 mb-2">
                                     <div>
                                         <p class="fs-5 text m-0">${data.title}</p>
                                         <p>${data.body}</p>
                                     </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
-                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comments</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
+                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
                             </div>`;
@@ -124,9 +131,9 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-md-inline-flex w-100">
+                                        <div class="media d-block d-md-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
-                                                <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-0 ps-md-2 me-2">
                                                 <a href="/pages/profile.html?user=${data.author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data.author.name}</div></a>
@@ -137,15 +144,15 @@ async function fetchPost() {
                                                 <button class="btn btn-danger mt-2 mt-md-0 mt-auto" style="width:107px" id="delete-post-btn">Delete post</button>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                             <img src="${data.media}" class="mw-100 mt-2 shadow rounded d-block m-auto" style="max-height:600px;">
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
                                         <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
@@ -167,7 +174,7 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                        <div class="media d-block d-sm-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
                                             <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
                                             </a>
@@ -176,15 +183,15 @@ async function fetchPost() {
                                                 <div class="text-muted small" role="button" title="${data.created.substring(11,16)}">Posted ${data.created.substring(0,10)}</div>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
-                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comments</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
+                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
                             </div>`;
@@ -193,7 +200,7 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                        <div class="media d-block d-sm-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
                                             <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
                                             </a>
@@ -202,16 +209,16 @@ async function fetchPost() {
                                                 <div class="text-muted small" role="button" title="${data.created.substring(11,16)}">Posted ${data.created.substring(0,10)}</div>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                             <img src="${data.media}" class="mw-100 mt-2 shadow rounded d-block m-auto" style="max-height:600px;">
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
-                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comments</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
+                                        <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
                             </div>`;
@@ -226,23 +233,23 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                        <div class="media d-block d-sm-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
-                                                <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-0 ps-md-2">
                                                 <a href="/pages/profile.html?user=${data.author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data.author.name}</div></a>
                                                 <div class="text-muted small" role="button" title="${data.created.substring(11,16)}">Posted ${data.created.substring(0,10)}</div>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
                                         <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
@@ -252,24 +259,24 @@ async function fetchPost() {
                             `<div class="m-auto">
                                 <div class="card mb-3">
                                     <div class="card-body">
-                                        <div class="media mb-3 d-block d-sm-inline-flex w-100">
+                                        <div class="media d-block d-sm-inline-flex w-100">
                                             <a href="/pages/profile.html?user=${data.author.name}" class="d-inline-flex">
-                                                <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data.author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-0 ps-md-2">
                                                 <a href="/pages/profile.html?user=${data.author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data.author.name}</div></a>
                                                 <div class="text-muted small" role="button" title="${data.created.substring(11,16)}">Posted ${data.created.substring(0,10)}</div>
                                             </div>
                                         </div>
-                                        <hr/ class="mt-1 mb-1">
+                                        <hr/ class="mt-2 mb-2">
                                         <div>
                                             <p class="fs-5 text m-0">${data.title}</p>
                                             <p>${data.body}</p>
                                             <img src="${data.media}" class="mw-100 mt-2 shadow rounded d-block m-auto" style="max-height:600px;">
                                         </div>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
-                                        <a href="#" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data.reactions.length}</strong> Reaction(s)</small> </a>
+                                    <div class="card-footer d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                        <div class="post_reactions d-flex gap-1"></div>
                                         <a href="#" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data.comments.length}</strong> Comment(s)</small> </a>
                                     </div>
                                 </div>
@@ -283,12 +290,30 @@ async function fetchPost() {
                 console.log(e);
             }
         }
+        const postReactions = document.querySelector(".post_reactions");
+        if (`${data.reactions.length}` > 0) {
+            for (let i = 0; i < 4; i++) {
+                postReactions.innerHTML +=
+                `<a href="#" class="post_reaction d-inline-block text-muted text-decoration-none bg-white rounded p-1 border" title="Reaction: ${data.reactions[i].symbol}"><small class="align-middle">${data.reactions[i].symbol}<strong>${data.reactions[i].count}</strong></small></a>
+                `
+            }
+            if (`${data.reactions.length}` > 4) {
+                postReactions.innerHTML += `<a href="#" class="mt-auto text-decoration-none text-muted">...</a>`;
+            }
+        }
     } catch(e) {
         console.log(e);
     }
 }
 
 fetchPost();
+
+const numArray = [140000, 104, 99];
+numArray.sort(function(a, b) {
+  return a - b;
+}); console.log(numArray);
+
+console.log(numArray);
 
 // Post comment
 function postComment() {

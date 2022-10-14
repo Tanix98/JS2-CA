@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Homepage</title>
     <link rel="shortcut icon" type="image/jpg" href="https://twemoji.maxcdn.com/v/14.0.2/svg/1f1e8.svg"/>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="../js/searchbar.js" defer></script>
+    <script src="../js/search.js" defer></script>
     <script src="../js/login_check.js" defer></script>
     <script src="../js/logged_in.js" defer></script>
-    <script src="../js/profile.js" defer></script>
+    <script src="../js/create_post.js" defer></script>
     <script src="../js/create_post_mobile.js" defer></script>
 </head>
 <body>
     <!-- header -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark d-flex align-items-center fixed-top">
         <div class="container-fluid">
-            <button class="navbar-toggler col-1.1 col-sm-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobilemenu">
+            <button class="navbar-toggler col-1.1 col-sm-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobilemenu" id="navbar-btn">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="col-10.1 col-sm-4 col-md-4 m-auto">
@@ -98,63 +99,40 @@
             </div>
         </div>
         <div class="container-xxl" style="padding-top:30px">
-            <div class="row d-flex justify-content-center">
-                <!-- Profile info -->
-                <div class="col col-sm-10 col-md-9 col-lg-7 shadow rounded pt-3">
-                    <div class="mb-4" id="profile-main">
-                    </div>
-                    <!-- Profile's posts -->
-                    <div>
-                        <h4>Posts</h4>
-                        <hr/ class="mt-2 mb-2">
-                        <div id="user-post-feed">
+            <div class="row">
+                <!-- Create post, not fixed) -->
+                <div class="col-sm-3 d-none d-sm-block pe-sm-0">
+                    <form action="" class="">
+                        <div class="form-group mt-2">
+                            <h5 class="mb-2">Create post</h5>
+                            <input class="form-control mb-1" id="post-title" placeholder="Post title...">
+                            <textarea class="form-control" id="post-body" placeholder="Write post..." rows="3"></textarea>
+                            <form action="">
+                                <div class="mt-1 d-flex justify-content-between" style="max-height: 40px;">
+                                    <input class="form-control" id="post-media" placeholder="Paste media link here...">
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary d-block mt-1 ps-4 pe-4 ms-auto" id="post-btn">Post</button>
+                                </div>
+                                <p class="text-danger mb-0" style="display: none" id="post-error">Media link invalid</p>
+                            </form>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
-                <!-- Profile contact list -->
-                <div class="col-3 d-none justify-content-center">
-                    <div class="d-none d-sm-block">
-                        <h4 class="mb-3 text-center">Ola Normann's contacts</h4>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
-                        </div>
-                        <div class="">
-                            <li class="media mb-3 d-flex justify-content-center">
-                                <a href="/pages/profile.html" class="d-flex align-items-center text-decoration-none text-dark"><img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px"><div class="media-body ps-1">Ola Normann</div></a>
-                            </li>
+                <!-- Post feed -->
+                <!-- Change likes & comments to icons -->
+                <div class="ps-sm-0 col-sm-9 col-md-7 col-lg-6">
+                    <div class="posts-content ps-sm-4">
+                        <h2 class="text-center mb-4">Search results</h2>
+                        <hr/ class="mt-3 mb-3">
+                        <div>
+                            <div id="post-feed">
+                            </div>
+                            <div class="text-center mt-5" id="no-results-message" style="display: none;">
+                                <h3>No search results &gt;﹏&lt;</h3>
+                                <h4 class="text-muted">(search is case sensitive)</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -163,7 +141,7 @@
     </main>
 
     <!-- footer (find better solution) -->
-    <footer class="text-center bg-light p-2 mt-3">
+    <footer class="text-center bg-light p-2 mt-3" id="search-footer">
         <div class="container">
             <div class="p-2">Copyright &copy; 2022 Company</div>
         </div>

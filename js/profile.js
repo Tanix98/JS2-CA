@@ -19,8 +19,8 @@ async function fetchProfile() {
             profile.innerHTML += `
             <div style=";background-image: url('${data.banner}'); box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1); background-size: cover;" class="rounded p-2">
                 <div class="d-block d-sm-flex">
-                    <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block rounded-circle profile-img-main shadow m-auto m-sm-0">
-                    <h3 class="text-center text-light mb-2 mb-sm-3 mt-2 mt-sm-auto ms-0 ms-sm-3" style="text-shadow: 2px 2px 6px #000">${data.name}</h3>
+                    <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block rounded-circle profile-img-main shadow m-auto m-sm-0 mt-2 mt-sm-0">
+                    <h3 class="text-center text-light mb-0 mb-sm-3 mt-2 mt-sm-auto ms-0 ms-sm-3" style="text-shadow: 2px 2px 6px #000">${data.name}</h3>
                 </div>
             </div>
             `;
@@ -29,7 +29,7 @@ async function fetchProfile() {
             <div style=";background-image: url('${data.banner}'); box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1); background-size: cover;" class="rounded p-2">
                 <div class="d-block d-sm-flex">
                     <img src="${data.avatar}" class="d-block rounded-circle profile-img-main shadow m-auto m-sm-0">
-                    <h3 class="text-center text-light mb-2 mb-sm-3 mt-2 mt-sm-auto ms-0 ms-sm-3" style="text-shadow: 2px 2px 6px #000">${data.name}</h3>
+                    <h3 class="text-center text-light mb-0 mb-sm-3 mt-2 mt-sm-auto ms-0 ms-sm-3" style="text-shadow: 2px 2px 6px #000">${data.name}</h3>
                 </div>
             </div>
             `;
@@ -45,7 +45,7 @@ fetchProfile();
 async function fetchUserPostFeed() {
     try {
         const userPostFeed = document.querySelector("#user-post-feed");
-        const apiPosts = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true&limit=10000000";
+        const apiPosts = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true&limit=2000";
         const response = await fetch(apiPosts, {
             method: "GET",
             headers: {
@@ -63,7 +63,7 @@ async function fetchUserPostFeed() {
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="media mb-3 d-inline-flex">
-                                            <a href="/pages/profile.html?user=${data[i].author.name}" class="d-inline-flex">
+                                            <a href="#" class="d-inline-flex">
                                                 <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
                                             </a>
                                             <div class="d-flex flex-column ps-2">
@@ -74,7 +74,7 @@ async function fetchUserPostFeed() {
                                         <hr/ class="mt-1 mb-1">
                                         <a href="/pages/post.html?id=${data[i].id}" class="text-dark text-decoration-none"><p class="fs-5 text m-0">${data[i].title}</p><div>${data[i].body.substring(0,300)}</div></a>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                    <div class="card-footer d-flex justify-content-between gap-1 flex-wrap">
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data[i].reactions.length}</strong> Reaction(s)</small> </a>
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data[i].comments.length}</strong> Comment(s)</small> </a>
                                     </div>
@@ -86,7 +86,7 @@ async function fetchUserPostFeed() {
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         <div class="media mb-3 d-inline-flex">
-                                            <a href="/pages/profile.html?user=${data[i].author.name}" class="d-inline-flex">
+                                            <a href="#" class="d-inline-flex">
                                                 <img src="/wireframes_design/icons/selfmade-icons/default_profile_img.svg" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
                                             </a>
                                             <div class="d-flex flex-column ps-2">
@@ -97,7 +97,7 @@ async function fetchUserPostFeed() {
                                         <hr/ class="mt-1 mb-1">
                                         <a href="/pages/post.html?id=${data[i].id}" class="text-dark text-decoration-none"><p class="fs-5 text m-0">${data[i].title}</p><div>${data[i].body.substring(0,300)}</div><img src="${data[i].media}" class="mw-100 mt-2 shadow rounded d-block m-auto" style="max-height:400px;"></a>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                    <div class="card-footer d-flex justify-content-between gap-1 flex-wrap">
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data[i].reactions.length}</strong> Reaction(s)</small> </a>
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data[i].comments.length}</strong> Comment(s)</small> </a>
                                     </div>
@@ -122,7 +122,7 @@ async function fetchUserPostFeed() {
                                         <hr/ class="mt-1 mb-1">
                                         <a href="/pages/post.html?id=${data[i].id}" class="text-dark text-decoration-none"><p class="fs-5 text m-0">${data[i].title}</p><div>${data[i].body.substring(0,300)}</div></a>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                    <div class="card-footer d-flex justify-content-between gap-1 flex-wrap">
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data[i].reactions.length}</strong> Reaction(s)</small> </a>
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data[i].comments.length}</strong> Comment(s)</small> </a>
                                     </div>
@@ -145,7 +145,7 @@ async function fetchUserPostFeed() {
                                         <hr/ class="mt-1 mb-1">
                                         <a href="/pages/post.html?id=${data[i].id}" class="text-dark text-decoration-none"><p class="fs-5 text m-0">${data[i].title}</p><div>${data[i].body.substring(0,300)}</div><img src="${data[i].media}" class="mw-100 mt-2 shadow rounded d-block m-auto" style="max-height:400px;"></a>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-between flex-column flex-sm-row">
+                                    <div class="card-footer d-flex justify-content-between gap-1 flex-wrap">
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted text-decoration-none"> <small class="align-middle"> <strong>${data[i].reactions.length}</strong> Reaction(s)</small> </a>
                                         <a href="/pages/post.html?id=${data[i].id}" class="d-inline-block text-muted ml-3 text-decoration-none"> <small class="align-middle"> <strong>${data[i].comments.length}</strong> Comment(s)</small> </a>
                                     </div>
