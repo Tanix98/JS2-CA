@@ -3,7 +3,6 @@ const postFeed = document.querySelector("#post-feed");
 //const queryString = document.location.search;
 const queryString = window.location.pathname
 const params = new URLSearchParams(queryString);
-const postId = params.get("");
 
 const userToken = "Bearer " + localStorage.getItem("accessToken");
 

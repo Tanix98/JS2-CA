@@ -1,12 +1,4 @@
-const apiUrl = "https://nf-api.onrender.com/api/v1/social/posts";
-const userToken1 = "Bearer " + localStorage.getItem("accessToken");
-
-const postTitle = document.querySelector("#post-title");
-const postBody = document.querySelector("#post-body");
-const postMedia = document.querySelector("#post-media");
-const postBtn = document.querySelector("#post-btn");
-const postError = document.querySelector("#post-error");
-
+import { urlPosts, userToken, postTitle, postBody, postMedia, postBtn, postError } from './variables.mjs';
 
 async function createPost() {
     try{
@@ -17,11 +9,11 @@ async function createPost() {
                     title: postTitle.value,
                     body: postBody.value
                 };
-                const response = await fetch(apiUrl, {
+                const response = await fetch(urlPosts, {
                     method: "POST",
                     body: JSON.stringify(sendBody),
                     headers: {
-                        "Authorization": userToken1,
+                        "Authorization": userToken,
                         "Content-Type": "application/json"
                     },
                 });
@@ -42,11 +34,11 @@ async function createPost() {
                         body: postBody.value,
                         media: postMedia.value
                     };
-                    const response = await fetch(apiUrl, {
+                    const response = await fetch(urlPosts, {
                         method: "POST",
                         body: JSON.stringify(sendBody),
                         headers: {
-                            "Authorization": userToken1,
+                            "Authorization": userToken,
                             "Content-Type": "application/json"
                         },
                     });

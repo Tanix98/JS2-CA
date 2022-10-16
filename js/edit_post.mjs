@@ -1,30 +1,18 @@
-const queryString2 = document.location.search;
-const params2 = new URLSearchParams(queryString2);
-const postId2 = params2.get("id");
-
-const apiUrl1 = "https://nf-api.onrender.com/api/v1/social/posts/" + postId2;
-const userToken3 = "Bearer " + localStorage.getItem("accessToken");
-
-const postTitleInput1 = document.querySelector("#edit-post-title");
-const postBodyInput1 = document.querySelector("#edit-post-body");
-const postMediaInput1 = document.querySelector("#edit-post-media");
-const editPostError = document.querySelector("#title-body-error");
-const editMediaError = document.querySelector("#media-error");
-const fieldsEmpty = document.querySelector("#fields-empty");
+import { userToken, apiUrlPostId, editPostTitleInput, editPostBodyInput, editPostMediaInput, editPostError, editMediaError, fieldsEmpty } from './variables.mjs';
 
 async function editPost() {
     try {
-        if (postTitleInput1.value && postBodyInput1.value && postMediaInput1.value) {
+        if (editPostTitleInput.value && editPostBodyInput.value && editPostMediaInput.value) {
             const sendBody = {
-                title: postTitleInput1.value,
-                body: postBodyInput1.value,
-                media: postMediaInput1.value
+                title: editPostTitleInput.value,
+                body: editPostBodyInput.value,
+                media: editPostMediaInput.value
             };
-            const response = await fetch(apiUrl1, {
+            const response = await fetch(apiUrlPostId, {
                 method: "PUT",
                 body: JSON.stringify(sendBody),
                 headers: {
-                    "Authorization": userToken3,
+                    "Authorization": userToken,
                     "Content-Type": "application/json"
                 },
             });
@@ -40,25 +28,25 @@ async function editPost() {
                 document.location.reload();
             }
             
-            /*if (postBodyInput1.value === "") {
-                postBodyInput1.value = `${data.body}`
+            /*if (editPostBodyInput.value === "") {
+                editPostBodyInput.value = `${data.body}`
             }
 
-            if (postBodyInput1.value === "") {
-                postBodyInput1.value = `${data.body}`
+            if (editPostBodyInput.value === "") {
+                editPostBodyInput.value = `${data.body}`
             }*/
         }
 
-        if (postTitleInput1.value && postBodyInput1.value) {
+        if (editPostTitleInput.value && editPostBodyInput.value) {
             const sendBody = {
-                title: postTitleInput1.value,
-                body: postBodyInput1.value
+                title: editPostTitleInput.value,
+                body: editPostBodyInput.value
             };
-            const response = await fetch(apiUrl1, {
+            const response = await fetch(apiUrlPostId, {
                 method: "PUT",
                 body: JSON.stringify(sendBody),
                 headers: {
-                    "Authorization": userToken3,
+                    "Authorization": userToken,
                     "Content-Type": "application/json"
                 },
             });
@@ -67,13 +55,13 @@ async function editPost() {
             document. location. reload()
         }
 
-        if (postTitleInput1.value === "" && postBodyInput1.value === "" || postTitleInput1.value === "" || postBodyInput1.value === "") {
+        if (editPostTitleInput.value === "" && editPostBodyInput.value === "" || editPostTitleInput.value === "" || editPostBodyInput.value === "") {
             editPostError.style.display = "block";
         } else {
             editPostError.style.display = "none";
         }
 
-        if (postTitleInput1.value === "" && postBodyInput1.value === "" && postMediaInput1.value === "") {
+        if (editPostTitleInput.value === "" && editPostBodyInput.value === "" && editPostMediaInput.value === "") {
             fieldsEmpty.style.display = "block";
         } else {
             fieldsEmpty.style.display = "none";

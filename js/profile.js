@@ -45,7 +45,7 @@ fetchProfile();
 async function fetchUserPostFeed() {
     try {
         const userPostFeed = document.querySelector("#user-post-feed");
-        const apiPosts = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true&limit=2000";
+        const apiPosts = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true&limit=1200";
         const response = await fetch(apiPosts, {
             method: "GET",
             headers: {

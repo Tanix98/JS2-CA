@@ -1,16 +1,11 @@
-const queryString1 = document.location.search;
-const params1 = new URLSearchParams(queryString1);
-const postId1 = params1.get("id");
-
-const apiUrl = "https://nf-api.onrender.com/api/v1/social/posts/";
-const userToken2 = "Bearer " + localStorage.getItem("accessToken");
+import { urlPosts, postId, userToken } from './variables.mjs';
 
 async function deletePost() {
     try{
-        const response = await fetch(apiUrl + postId1, {
+        const response = await fetch(urlPosts + postId, {
             method: "DELETE",
             headers: {
-                "Authorization": userToken2,
+                "Authorization": userToken,
             },
         });
         const data = await response.json();
