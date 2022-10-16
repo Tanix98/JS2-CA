@@ -17,7 +17,7 @@ export { apiUrlPostId, urlPostsMain, urlPostsAll, urlPosts };
 
 // LocalStorage variables
 const userToken = "Bearer " + localStorage.getItem("accessToken");
-const userName = localStorage.getItem("userName");
+/*const userName = localStorage.getItem("userName");*/
 export { userToken, userName };
 
 // Fetch get with url parameter
