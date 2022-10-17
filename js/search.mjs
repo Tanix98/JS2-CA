@@ -1,9 +1,4 @@
-const noResultsMessage = document.querySelector("#no-results-message");
-const searchFooter = document.querySelector("#search-footer");
-
-const apiPosts = "https://nf-api.onrender.com/api/v1/social/posts?_author=true&_comments=true&_reactions=true&limit=1200";
-const userToken = "Bearer " + localStorage.getItem("accessToken");
-const postFeed = document.querySelector("#post-feed");
+import { urlPostsAll, userToken, postFeed, noResultsMessage, searchFooter, srcBar } from './variables.mjs';
 
 function search(){
   async function fetchPostFeedFiltered(url) {
@@ -147,7 +142,7 @@ function search(){
         console.log(e);
     }
   }
-  fetchPostFeedFiltered(apiPosts);
+  fetchPostFeedFiltered(urlPostsAll);
 }
 
 search();

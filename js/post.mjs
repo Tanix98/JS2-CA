@@ -1,11 +1,6 @@
-const queryString = document.location.search;
-const params = new URLSearchParams(queryString);
-const postId = params.get("id");
+import { postId, userToken, userName, postUrl, commentsContainer, postCommentBtn } from './variables.mjs';
 
 const postContainer = document.querySelector("#post-container");
-const postUrl = "https://nf-api.onrender.com/api/v1/social/posts/" + postId + "?_author=true&_comments=true&_reactions=true";
-const userToken = "Bearer " + localStorage.getItem("accessToken");
-const userName = localStorage.getItem("userName");
 
 // Fetch post
 async function fetchPost() {
@@ -361,15 +356,12 @@ function postComment() {
         }
     }*/
 }
-const postCommentBtn = document.querySelector("#post-comment-btn");
 postCommentBtn.addEventListener("click", (e) => {
     e.preventDefault();
     postComment();
 });
 
 // Fetch comments
-const commentsContainer = document.querySelector("#comments-container");
-
 async function fetchComments() {
     try {
         const response = await fetch(postUrl, {

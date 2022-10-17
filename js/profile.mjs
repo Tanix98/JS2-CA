@@ -1,14 +1,8 @@
-const queryString = document.location.search;
-const params = new URLSearchParams(queryString);
-const userName = params.get("user");
-
-const userToken = "Bearer " + localStorage.getItem("accessToken");
-const postUrl = "https://nf-api.onrender.com/api/v1/social/profiles/" + userName + "?_posts=true&_following=true&_followers=true";
-const profile = document.querySelector("#profile-main");
+import { profileUserName, userToken, urlPostsAll, userPostFeed, profileUrl, profile } from './variables.mjs';
 
 async function fetchProfile() {
     try {
-        const response = await fetch(postUrl, {
+        const response = await fetch(profileUrl, {
             method: "GET",
             headers: {
                 "Authorization": userToken
@@ -44,9 +38,7 @@ fetchProfile();
 
 async function fetchUserPostFeed() {
     try {
-        const userPostFeed = document.querySelector("#user-post-feed");
-        const apiPosts = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true&limit=1200";
-        const response = await fetch(apiPosts, {
+        const response = await fetch(urlPostsAll, {
             method: "GET",
             headers: {
                 "Authorization": userToken
@@ -54,7 +46,7 @@ async function fetchUserPostFeed() {
         });
         const data = await response.json();
         for (let i = 0; i < data.length; i++) {
-            if (`${data[i].author.name}` === userName) {
+            if (`${data[i].author.name}` === profileUserName) {
                 try {
                     if (`${data[i].author.avatar}` === "") {
                         if (`${data[i].media}` === "") {

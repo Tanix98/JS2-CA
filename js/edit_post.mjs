@@ -1,58 +1,38 @@
-import { userToken, apiUrlPostId, editPostTitleInput, editPostBodyInput, editPostMediaInput, editPostError, editMediaError, fieldsEmpty } from './variables.mjs';
+import { userToken, apiUrlPostId, editPostTitleInput, editPostBodyInput, editPostMediaInput, editPostError, editMediaError, fieldsEmpty, editPostModal } from './variables.mjs';
 
 async function editPost() {
     try {
-        if (editPostTitleInput.value && editPostBodyInput.value && editPostMediaInput.value) {
-            const sendBody = {
-                title: editPostTitleInput.value,
-                body: editPostBodyInput.value,
-                media: editPostMediaInput.value
-            };
-            const response = await fetch(apiUrlPostId, {
-                method: "PUT",
-                body: JSON.stringify(sendBody),
-                headers: {
-                    "Authorization": userToken,
-                    "Content-Type": "application/json"
-                },
-            });
+        let sendBody = {
+            title: editPostTitleInput.value,
+            body: editPostBodyInput.value,
+            media: editPostMediaInput.value
+        };
 
-            const data = await response.json();
-            console.log("1" + JSON.stringify(data));
-
-            if (data.statusCode === 400) {
-                console.log("Media url error" + JSON.stringify(data));
-                editMediaError.style.display = "block";
-            } else {
-                editMediaError.style.display = "none";
-                document.location.reload();
-            }
-            
-            /*if (editPostBodyInput.value === "") {
-                editPostBodyInput.value = `${data.body}`
-            }
-
-            if (editPostBodyInput.value === "") {
-                editPostBodyInput.value = `${data.body}`
-            }*/
-        }
-
-        if (editPostTitleInput.value && editPostBodyInput.value) {
-            const sendBody = {
+        if (editPostTitleInput.value && editPostBodyInput.value && editPostBodyInput.value === "") {
+            sendBody = {
                 title: editPostTitleInput.value,
                 body: editPostBodyInput.value
             };
-            const response = await fetch(apiUrlPostId, {
-                method: "PUT",
-                body: JSON.stringify(sendBody),
-                headers: {
-                    "Authorization": userToken,
-                    "Content-Type": "application/json"
-                },
-            });
-            const data = await response.json();
-            console.log("2" + JSON.stringify(data));
-            document. location. reload()
+        }
+
+        const response = await fetch(apiUrlPostId, {
+            method: "PUT",
+            body: JSON.stringify(sendBody),
+            headers: {
+                "Authorization": userToken,
+                "Content-Type": "application/json"
+            },
+        });
+
+        const data = await response.json();
+        console.log("1" + JSON.stringify(data));
+
+        if (data.statusCode === 400) {
+            console.log("Media url error" + JSON.stringify(data));
+            editMediaError.style.display = "block";
+        } else {
+            editMediaError.style.display = "none";
+            document.location.reload();
         }
 
         if (editPostTitleInput.value === "" && editPostBodyInput.value === "" || editPostTitleInput.value === "" || editPostBodyInput.value === "") {
@@ -66,13 +46,10 @@ async function editPost() {
         } else {
             fieldsEmpty.style.display = "none";
         }
-    }
-    catch(e) {
+    } catch(e) {
         console.log(e);
     }
 }
-
-const editPostModal = document.querySelector("#edit-post-modal");
 
 setTimeout(function(){
     const openEditPostModalBtn = document.querySelector("#open-edit-post-modal-btn");

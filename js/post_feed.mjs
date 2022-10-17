@@ -1,10 +1,4 @@
-const postFeed = document.querySelector("#post-feed");
-
-//const queryString = document.location.search;
-const queryString = window.location.pathname
-const params = new URLSearchParams(queryString);
-
-const userToken = "Bearer " + localStorage.getItem("accessToken");
+import { postFeed, userToken, sortByOldest, sortByRecent, filterByMedia, filterByText } from './variables.mjs';
 
 async function fetchPostFeed(url) {
     postFeed.innerHTML = "";
@@ -130,8 +124,6 @@ async function fetchPostFeed(url) {
 
 fetchPostFeed("https://nf-api.onrender.com/api/v1/social/posts?_author=true&_comments=true&_reactions=true");
 
-const sortByOldest = document.querySelector("#sort-oldest");
-const sortByRecent = document.querySelector("#sort-recent");
 sortByOldest.addEventListener("click", () => {
     console.log("Sort button 1 clicked!")
     sortByRecent.checked = false;
@@ -401,8 +393,6 @@ async function fetchPostFeedNoTextOnly(url) {
     }
 }
 
-const filterByMedia = document.querySelector("#filter-media");
-const filterByText = document.querySelector("#filter-text");
 filterByMedia.addEventListener("click", () => {
     console.log("Sort button 1 clicked!")
     filterByText.checked = false;

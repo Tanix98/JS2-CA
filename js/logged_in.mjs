@@ -1,5 +1,4 @@
-const loggedOutDisplay = document.querySelector(".logged_out_nav");
-const loggedInDisplay = document.querySelector(".logged_in_nav");
+import { loggedOutDisplay, loggedInDisplay } from './variables.mjs';
 
 if (localStorage.getItem("accessToken")) {
     loggedInDisplay.style.display = "block";

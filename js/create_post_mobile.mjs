@@ -1,11 +1,4 @@
-const apiUrl4 = "https://nf-api.onrender.com/api/v1/social/posts/";
-const userToken4 = "Bearer " + localStorage.getItem("accessToken");
-
-const postTitleInputMobile = document.querySelector("#post-title-mobile");
-const postBodyInputMobile = document.querySelector("#post-body-mobile");
-const postMediaInputMobile = document.querySelector("#post-media-mobile");
-const postErrorMobile = document.querySelector("#title-body-error-mobile");
-const postMediaErrorMobile = document.querySelector("#media-error-mobile");
+import { urlPosts, userToken, postTitleInputMobile, postBodyInputMobile, postMediaInputMobile, postErrorMobile, postMediaErrorMobile, mobileMenu, postModalMobile, openPostModalBtnMobile, createPostModalMobile, cancelBtnMobile } from './variables.mjs';
 
 async function createPostMobile() {
     try{
@@ -17,11 +10,11 @@ async function createPostMobile() {
                     title: postTitleInputMobile.value,
                     body: postBodyInputMobile.value
                 };
-                const response = await fetch(apiUrl4, {
+                const response = await fetch(urlPosts, {
                     method: "POST",
                     body: JSON.stringify(sendBody),
                     headers: {
-                        "Authorization": userToken4,
+                        "Authorization": userToken,
                         "Content-Type": "application/json"
                     },
                 });
@@ -42,11 +35,11 @@ async function createPostMobile() {
                         body: postBodyInputMobile.value,
                         media: postMediaInputMobile.value
                     };
-                    const response = await fetch(apiUrl4, {
+                    const response = await fetch(urlPosts, {
                         method: "POST",
                         body: JSON.stringify(sendBody),
                         headers: {
-                            "Authorization": userToken4,
+                            "Authorization": userToken,
                             "Content-Type": "application/json"
                         },
                     });
@@ -71,23 +64,18 @@ async function createPostMobile() {
     }
 }
 
-const mobileMenu = document.querySelector("#mobilemenu");
-const PostModalMobile = document.querySelector("#create-post-modal-mobile");
-const openPostModalBtnMobile = document.querySelector("#open-create-post-modal-btn-mobile");
 openPostModalBtnMobile.addEventListener("click", (e) => {
     e.preventDefault();
     mobileMenu.classList.remove("show");
-    PostModalMobile.style.display = "block";
+    postModalMobile.style.display = "block";
 });
 
-const createPostModalMobile = document.querySelector("#create-post-btn-mobile");
 createPostModalMobile.addEventListener("click", (e) => {
     e.preventDefault();
     createPostMobile();
 });
 
-const cancelBtnMobile = document.querySelector("#cancel-btn-mobile");
 cancelBtnMobile.addEventListener("click", (e) => {
     e.preventDefault();
-    PostModalMobile.style.display = "none";
+    postModalMobile.style.display = "none";
 });

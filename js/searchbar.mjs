@@ -1,5 +1,4 @@
-const srcBar = document.querySelector("#search-input");
-const srcBtn = document.querySelector("#search-button");
+import { srcBar, srcBtn } from './variables.mjs';
 
 srcBtn.addEventListener("click", (e) => {
     e.preventDefault();

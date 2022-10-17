@@ -1,19 +1,4 @@
-// Inputs
-const loginEmail = document.querySelector("#login-email");
-const loginPassword = document.querySelector("#login-password");
-const regName = document.querySelector("#reg-name");
-const regEmail = document.querySelector("#reg-email");
-const regPassword = document.querySelector("#reg-password");
-
-// Error messages
-const loginError = document.querySelector("#login-error");
-const nameError = document.querySelector("#name-error")
-const emailError1 = document.querySelector("#email-error1")
-const emailError2 = document.querySelector("#email-error2")
-const regPasswordError = document.querySelector("#password-error");
-const regError = document.querySelector("#reg-error");
-
-const regSuccess = document.querySelector("#reg-success");
+import { loginEmail, loginPassword, regName, regEmail, regPassword, loginError, nameError, emailError1, emailError2, regPasswordError, regError, regSuccess } from './variables.mjs';
 
 // Rewrite login and register function into one using if else btn id?
 

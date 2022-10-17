@@ -2,61 +2,35 @@ import { urlPosts, userToken, postTitle, postBody, postMedia, postBtn, postError
 
 async function createPost() {
     try{
+        let sendBody = {
+            title: postTitle.value,
+            body: postBody.value,
+            media: postMedia.value
+        };
         if (postTitle.value && postBody.value && postMedia.value === "") {
-            try {
-                console.log("1");
-                const sendBody = {
-                    title: postTitle.value,
-                    body: postBody.value
-                };
-                const response = await fetch(urlPosts, {
-                    method: "POST",
-                    body: JSON.stringify(sendBody),
-                    headers: {
-                        "Authorization": userToken,
-                        "Content-Type": "application/json"
-                    },
-                });
-                const data = await response.json();
-                console.log("data: " + data);
-                console.log("sendBody: " + sendBody);
-                postError.style.display = "none";
-                window.location.reload();
-            } catch (e) {
-                console.log(e);
-            }
+            sendBody = {
+                title: postTitle.value,
+                body: postBody.value
+            };
+        }
+        const response = await fetch(urlPosts, {
+            method: "POST",
+            body: JSON.stringify(sendBody),
+            headers: {
+                "Authorization": userToken,
+                "Content-Type": "application/json"
+            },
+        });
+        const data = await response.json();
+        console.log("data: " + data);
+        console.log("sendBody: " + sendBody);
+        if (data.statusCode === 400) {
+            postError.style.display = "block";
+            console.log("Error " + data.statusCode);
         } else {
-            if (postTitle.value && postBody.value && postMedia.value) {
-                try {
-                    console.log("2");
-                    const sendBody = {
-                        title: postTitle.value,
-                        body: postBody.value,
-                        media: postMedia.value
-                    };
-                    const response = await fetch(urlPosts, {
-                        method: "POST",
-                        body: JSON.stringify(sendBody),
-                        headers: {
-                            "Authorization": userToken,
-                            "Content-Type": "application/json"
-                        },
-                    });
-                    const data = await response.json();
-                    console.log("data: " + data);
-                    console.log("sendBody: " + sendBody);
-                    if (data.statusCode === 400) {
-                        postError.style.display = "block";
-                        console.log("Error " + data.statusCode);
-                    } else {
-                        postError.style.display = "none";
-                        window.location.reload();
-                    }
-                } catch (e) {
-                    console.log(e);
-                }
-            }
-        } 
+            postError.style.display = "none";
+            window.location.reload();
+        }
     }
     catch(e) {
         console.log(e);
