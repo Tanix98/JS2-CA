@@ -196,7 +196,7 @@ async function fetchPostFeedOnlyText(url) {
                                     <div class="card-body">
                                         <div class="media d-inline-flex">
                                             <a href="/pages/profile.html?user=${data[i].author.name}" class="d-inline-flex">
-                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-2">
                                                 <a href="/pages/profile.html?user=${data[i].author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data[i].author.name}</div></a>
@@ -244,7 +244,7 @@ async function fetchPostFeedOnlyText(url) {
                                     <div class="card-body">
                                         <div class="media d-inline-flex">
                                             <a href="/pages/profile.html?user=${data[i].author.name}" class="d-inline-flex">
-                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-2">
                                                 <a href="/pages/profile.html?user=${data[i].author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data[i].author.name}</div></a>
@@ -317,7 +317,7 @@ async function fetchPostFeedNoTextOnly(url) {
                                     <div class="card-body">
                                         <div class="media d-inline-flex">
                                             <a href="/pages/profile.html?user=${data[i].author.name}" class="d-inline-flex">
-                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-2">
                                                 <a href="/pages/profile.html?user=${data[i].author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data[i].author.name}</div></a>
@@ -365,7 +365,7 @@ async function fetchPostFeedNoTextOnly(url) {
                                     <div class="card-body">
                                         <div class="media d-inline-flex">
                                             <a href="/pages/profile.html?user=${data[i].author.name}" class="d-inline-flex">
-                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" width="50px" height="50px">
+                                                <img src="${data[i].author.avatar}" class="d-block ui-w-40 rounded-circle" alt="profile picture" style="width:50px; height:50px; object-fit:cover; object-position:center;">
                                             </a>
                                             <div class="d-flex flex-column ps-2">
                                                 <a href="/pages/profile.html?user=${data[i].author.name}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${data[i].author.name}</div></a>
