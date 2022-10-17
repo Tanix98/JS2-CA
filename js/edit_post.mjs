@@ -8,7 +8,7 @@ async function editPost() {
             media: editPostMediaInput.value
         };
 
-        if (editPostTitleInput.value && editPostBodyInput.value && editPostBodyInput.value === "") {
+        if (editPostTitleInput.value && editPostBodyInput.value && editPostBodyInput.value === null) {
             sendBody = {
                 title: editPostTitleInput.value,
                 body: editPostBodyInput.value

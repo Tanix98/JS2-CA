@@ -2,6 +2,9 @@ import { postId, userToken, userName, postUrl, commentsContainer, postCommentBtn
 
 const postContainer = document.querySelector("#post-container");
 
+const commentsSortRecent = document.querySelector("#comments-sort-recent");
+const commentsSortOldest = document.querySelector("#comments-sort-oldest");
+
 // Fetch post
 async function fetchPost() {
     try {
@@ -335,26 +338,6 @@ function postComment() {
     })().catch(e => {
         console.error(e);
     });
-
-    /*async function postComment() {
-        try {
-            const sendBody = {
-                body: commentInput.value,
-            };
-            const response = await fetch(postUrl5, {
-                method: "POST",
-                body: JSON.stringify(sendBody),
-                headers: {
-                    "Authorization": userToken5,
-                    "Content-Type": "application/json"
-                },
-            })
-            const data = await response.json();
-            console.log("Post reactions: " + JSON.stringify(data.reactions));
-        } catch (e) {
-            console.log(e);
-        }
-    }*/
 }
 postCommentBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -372,92 +355,88 @@ async function fetchComments() {
         })
         const data = await response.json();
         const dataComments = data.comments;
-
-        // PROBLEM: None of the scripts run if there are no comments
-
-        /*try {
-            for (let i = 0; i < data.length; i++) {
-                if (`${dataComments.length > 0}`) {
-                    commentsContainer.innerHTML += 
-                    `<div class="m-auto">
-                        <div class="card mb-1">
-                            <div class="card-body">
-                                <div class="media mb-2 d-inline-flex">
-                                    <div class="d-flex">
-                                        <a href="/pages/profile.html?user=${dataComments[i].owner}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${dataComments[i].owner}</div></a>
-                                        <div class="text-muted small ps-2 mt-auto" role="button" title="${dataComments[i].created.substring(11,16)}">Posted ${dataComments[i].created.substring(0,10)}</div>
+        const reversedComments = dataComments.map(comments => comments).reverse();
+        if (commentsSortRecent.checked) {
+            commentsContainer.innerHTML = "";
+            reversedComments.map((comments) => {
+                try {
+                    if (dataComments.length > 0) {
+                        console.log(dataComments.length);
+                        commentsContainer.innerHTML += 
+                        `<div class="m-auto">
+                            <div class="card mb-1">
+                                <div class="card-body">
+                                    <div class="media mb-2 d-inline-flex">
+                                        <div class="d-flex flex-column flex-sm-row">
+                                            <a href="/pages/profile.html?user=${comments.owner}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${comments.owner}</div></a>
+                                            <div class="text-muted small ms-0 ms-sm-2 mt-auto" role="button" title="${comments.created.substring(11,16)}">Posted ${comments.created.substring(0,10)}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div>${dataComments[i].body}</div>
-                            </div>
-                        </div>
-                    </div>`;
-                } else {
-                    console.log(dataComments.length);
-                    commentsContainer.innerHTML = `<p class="text-center fw-bold">No comments yet :(</p>`;
-                }
-            }
-        } catch(e) {
-            console.log(e);  
-        }*/
-        const reversedComments = dataComments.map(comments => comments).reverse()
-        reversedComments.map((comments) => {
-            try {
-                if (dataComments.length > 0) {
-                    console.log(dataComments.length);
-                    commentsContainer.innerHTML += 
-                    `<div class="m-auto">
-                        <div class="card mb-1">
-                            <div class="card-body">
-                                <div class="media mb-2 d-inline-flex">
-                                    <div class="d-flex flex-column flex-sm-row">
-                                        <a href="/pages/profile.html?user=${comments.owner}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${comments.owner}</div></a>
-                                        <div class="text-muted small ms-0 ms-sm-2 mt-auto" role="button" title="${comments.created.substring(11,16)}">Posted ${comments.created.substring(0,10)}</div>
-                                    </div>
-                                </div>
                                 <div>${comments.body}</div>
-                            </div>
-                        </div>
-                    </div>`;
-                } else {
-                    console.log(dataComments.length);
-                    commentsContainer.innerHTML = `<p class="text-center fw-bold">No comments yet :(</p>`;
-                }
-            } catch(e) {
-                console.log(e);  
-            }
-        });
-        /*
-        dataComments.forEach(function(comments) {
-            try {
-                if (dataComments.length > 0) {
-                    commentsContainer.innerHTML += 
-                    `<div class="m-auto">
-                        <div class="card mb-1">
-                            <div class="card-body">
-                                <div class="media mb-2 d-inline-flex">
-                                    <div class="d-flex">
-                                        <a href="/pages/profile.html?user=${comments.owner}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${comments.owner}</div></a>
-                                        <div class="text-muted small ps-2 mt-auto" role="button" title="${comments.created.substring(11,16)}">Posted ${comments.created.substring(0,10)}</div>
-                                    </div>
                                 </div>
-                                <div>${comments.body}</div>
                             </div>
-                        </div>
-                    </div>`;
-                } else {
-                    commentsContainer.innerHTML = `<p class="text-center fw-bold">No comments yet :(</p>`;
+                        </div>`;
+                    } else {
+                        console.log(dataComments.length);
+                        commentsContainer.innerHTML = `<p class="text-center fw-bold">No comments yet</p>`;
+                    }
+                } catch(e) {
+                    console.log(e);  
                 }
-            } catch(e) {
+            });
+        }
+        if (commentsSortOldest.checked) {
+            commentsContainer.innerHTML = "";
+            dataComments.map((comments) => {
+                try {
+                    if (dataComments.length > 0) {
+                        console.log(dataComments.length);
+                        commentsContainer.innerHTML += 
+                        `<div class="m-auto">
+                            <div class="card mb-1">
+                                <div class="card-body">
+                                    <div class="media mb-2 d-inline-flex">
+                                        <div class="d-flex flex-column flex-sm-row">
+                                            <a href="/pages/profile.html?user=${comments.owner}" class="text-dark text-decoration-none fw-bold"><div class="media-body">${comments.owner}</div></a>
+                                            <div class="text-muted small ms-0 ms-sm-2 mt-auto" role="button" title="${comments.created.substring(11,16)}">Posted ${comments.created.substring(0,10)}</div>
+                                        </div>
+                                    </div>
+                                    <div>${comments.body}</div>
+                                </div>
+                            </div>
+                        </div>`;
+                    } else {
+                        console.log(dataComments.length);
+                        commentsContainer.innerHTML = `<p class="text-center fw-bold">No comments yet</p>`;
+                    }
+                } catch(e) {
                 console.log(e);  
-            }
-        });*/
+                }
+            });
+        }
     } catch (e) {
         console.log(e);
     }
 }
 
 fetchComments();
+
+commentsSortRecent.addEventListener("click", () => {
+    commentsSortOldest.checked = false;
+    try {
+        fetchComments();
+    } catch (e) {
+        console.log(e);
+    }
+});
+commentsSortOldest.addEventListener("click", () => {
+    commentsSortRecent.checked = false;
+    try {
+        fetchComments();
+    } catch (e) {
+        console.log(e);
+    }
+});
 
 /*async function fetchComments() {
     try {

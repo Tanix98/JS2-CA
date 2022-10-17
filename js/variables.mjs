@@ -11,7 +11,7 @@ export { postFeed };
 
 // API url variables
 const apiUrlPostId = "https://nf-api.onrender.com/api/v1/social/posts/" + postId;
-const urlPostsAll = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true&limit=1200";
+const urlPostsAll = "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_comments=true&_reactions=true";
 const urlPostsMain = "https://nf-api.onrender.com/api/v1/social/posts?_author=true&_comments=true&_reactions=true";
 const urlPosts = "https://nf-api.onrender.com/api/v1/social/posts/";
 export { apiUrlPostId, urlPostsMain, urlPostsAll, urlPosts };

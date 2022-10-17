@@ -1,5 +1,5 @@
 (function () {
-    if (localStorage.getItem("accessToken") === null) {
+    if (localStorage.getItem("accessToken") === "") {
         window.location.href = "/pages/log_in.html";
     }
 })();

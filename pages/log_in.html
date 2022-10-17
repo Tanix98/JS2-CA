@@ -98,53 +98,55 @@
             </div>
         </div>
         <div class="container-xxl" style="padding-top:30px">
-            <!-- Login form -->
-            <div class="row d-flex justify-content-center mb-3">
-                <div class="col-11 col-sm-7 col-md-5 col-lg-4 col-xxl-3">
-                    <h3>Log in</h3>
-                    <form class="d-flex flex-column m-auto id="login-form"">
-                        <div class="form-group">
-                          <label for="mail">Email address</label>
-                          <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Email" required>
-                        </div>
-                        <div class="form-group mt-2">
-                          <label for="password">Password</label>
-                          <input type="password" class="form-control" id="login-password" placeholder="Password" required>
-                        </div>
-                        <p class="text-danger mb-0 mt-2" style="display:none" id="login-error">Incorrect email or password</p>
-                        <div class="d-flex justify-content-center gap-2 mt-3" style="max-height: 60px;">
-                            <button type="submit" class="btn btn-success" id="login-btn">Log in</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- Register form -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-11 col-sm-7 col-md-5 col-lg-4 col-xxl-3">
-                    <h3>Sign up</h3>
-                    <form class="d-flex flex-column m-auto" id="register-form">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input class="form-control" id="reg-name" placeholder="Name" required>
-                            <p class="text-danger mb-0" style="display:none" id="name-error">Name cannot contain punctuation symbols apart from underscore (_)</p>
-                        </div>
-                        <div class="form-group mt-2">
+            <div class="d-flex flex-wrap gap-5 justify-content-center">
+                <!-- Login form -->
+                <div class="row d-flex justify-content-center">
+                    <div class="">
+                        <h3>Log in</h3>
+                        <form class="d-flex flex-column m-auto id="login-form"">
+                            <div class="form-group">
                             <label for="mail">Email address</label>
-                            <input type="email" class="form-control email" id="reg-email" aria-describedby="emailHelp" placeholder="Email" required>
-                            <p class="text-danger mb-0" style="display:none" id="email-error1">Email must be a valid stud.noroff.no or noroff.no email address</p>
-                            <p class="text-danger mb-0" style="display:none" id="email-error2">This email is already in use</p>
-                        </div>
-                        <div class="form-group mt-2">
+                            <input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" placeholder="Email" required>
+                            </div>
+                            <div class="form-group mt-2">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="reg-password" placeholder="Password" required>
-                            <p class="text-danger mb-0" style="display:none" id="password-error">Password must be at least 8 characters long</p>
-                        </div>
-                        <p class="text-danger mb-0" style="display:none" id="reg-error">Profile already exists</p>
-                        <p class="text-success mb-0 fw-bold" style="display:none" id="reg-success">Account created!</p>
-                        <div class="d-flex justify-content-center gap-2 mt-3" style="max-height: 60px;">
-                            <button type="submit" class="btn btn-outline-dark" id="register-btn">Sign up</button>
-                        </div>
-                    </form>
+                            <input type="password" class="form-control" id="login-password" placeholder="Password" required>
+                            </div>
+                            <p class="text-danger mb-0 mt-2" style="display:none" id="login-error">Incorrect email or password</p>
+                            <div class="d-flex justify-content-center gap-2 mt-3" style="max-height: 60px;">
+                                <button type="submit" class="btn btn-success" id="login-btn">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register form -->
+                <div class="row d-flex justify-content-center">
+                    <div class="">
+                        <h3>Sign up</h3>
+                        <form class="d-flex flex-column m-auto" id="register-form">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" id="reg-name" placeholder="Name" required>
+                                <p class="text-danger mb-0" style="display:none" id="name-error">Name cannot contain punctuation symbols apart from underscore (_)</p>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="mail">Email address</label>
+                                <input type="email" class="form-control email" id="reg-email" aria-describedby="emailHelp" placeholder="Email" required>
+                                <p class="text-danger mb-0" style="display:none" id="email-error1">Email must be a valid stud.noroff.no or noroff.no email address</p>
+                                <p class="text-danger mb-0" style="display:none" id="email-error2">This email is already in use</p>
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="reg-password" placeholder="Password" required>
+                                <p class="text-danger mb-0" style="display:none" id="password-error">Password must be at least 8 characters long</p>
+                            </div>
+                            <p class="text-danger mb-0" style="display:none" id="reg-error">Profile already exists</p>
+                            <p class="text-success mb-0 fw-bold" style="display:none" id="reg-success">Account created!</p>
+                            <div class="d-flex justify-content-center gap-2 mt-3" style="max-height: 60px;">
+                                <button type="submit" class="btn btn-outline-dark" id="register-btn">Sign up</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

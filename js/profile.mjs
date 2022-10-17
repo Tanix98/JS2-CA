@@ -121,6 +121,7 @@ async function fetchUserPostFeed() {
                                 </div>
                             </div>`;
                         } else {
+                            console.log(`${data[i].media}`)
                             userPostFeed.innerHTML += 
                             `<div class="m-auto">
                                 <div class="card mb-4">

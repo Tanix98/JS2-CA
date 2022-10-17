@@ -18,13 +18,17 @@ async function deletePost() {
 }
 
 setTimeout(function(){
-    const deletePostBtn = document.querySelector("#delete-post-btn");
-    if (deletePostBtn === null) {
-    } else {
-        //console.log(deletePostBtn);
-        deletePostBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            deletePost();
-        });
+    try {
+        const deletePostBtn = document.querySelector("#delete-post-btn");
+        if (deletePostBtn === null) {
+        } else {
+            //console.log(deletePostBtn);
+            deletePostBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                deletePost();
+            });
+        }
+    } catch (e) {
+        console.log(e);
     }
 }, 1000);
