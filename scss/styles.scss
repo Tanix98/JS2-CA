@@ -1,0 +1,68 @@
+@import "variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.btn-custom {
+    @extend .btn-warning;
+  
+    &:hover {
+      @extend .btn-danger;
+    }
+}
+
+body { 
+    padding-top: 57px;
+}
+
+@media (max-width: 239.33px) {
+    body { 
+        padding-top: 96px;
+    }
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    margin-bottom: 0.2rem;
+}
+
+.dropdown-menu-center {
+    left: 50% !important;
+    right: auto !important;
+    text-align: center !important;
+    transform: translate(-50%, 0) !important;
+    width: 120px !important;
+    min-width: 120px !important;
+}
+
+.profile-img-main {
+    height: 180px !important;
+    width: 180px !important;
+    object-fit: cover;
+    object-position: center;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.profile-img-xl {
+    
+}
+
+.profile-img-lg {
+    
+}
+
+.profile-img-md {
+    
+}
+
+.profile-img-sm {
+    
+}
+
+.icons-md {
+
+}
+
+.icons-sm {
+
+}
